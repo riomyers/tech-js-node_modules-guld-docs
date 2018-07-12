@@ -1,8 +1,7 @@
 {
-  "name": "balboacoindocuments",
+  "name": "guld-docs",
   "version": "1.0.0",
-  "description": "Balboacoin Docs",
-  "main": "index.js",
+  "description": "Guld Docs",
   "dependencies": {
     "markdown-folder-to-html": "^1.5.2"
   },
