@@ -8,7 +8,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "markdown-folder-to-html"
+    "docs": "markdown-folder-to-html",
+    "build-legal": "rm -fR ~/io/http/guld.legal/contract; npm run docs; cp -fR _docs/* ~/io/http/guld.legal/; rm ~/io/http/guld.legal/template.html; chromium-browser ~/io/http/guld.legal/contract/template/Ethereum/ERC20_GULD_CONTRACT.html"
   },
   "repository": {
     "type": "git",
