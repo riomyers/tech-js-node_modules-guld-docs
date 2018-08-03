@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Guld Docs",
   "dependencies": {
-    "markdown-folder-to-html": "^1.5.2"
+    "markdown-folder-to-html": "git+https://github.com/isysd/markdown-folder-to-html.git"
   },
   "devDependencies": {},
   "scripts": {
@@ -12,7 +12,7 @@
     "rename-readmes": "find docs -name 'README.md' -exec bash -c 'mv $0 ${0/README.md/index.md}' {} \\;",
     "clean": "rm -fR _docs/* docs/*.md docs/**/*.md docs/**/**/*.md docs/**/**/**/*.md docs/**/**/**/**/*.md",
     "clean-legal": "rm -fR ~/io/http/guld.legal/contract ~/io/http/guld.legal/*.html docs/contract; npm run clean",
-    "build-legal": "npm run clean-legal; cp -r ~/Documents/guld/legal/* docs/; npm run docs; cp -fR _docs/* ~/io/http/guld.legal/; rm ~/io/http/guld.legal/template.html;"
+    "build-legal": "npm run clean-legal; cp -r ~/Documents/guld/legal/* docs/; npm run docs; cp -fR _docs/* ~/io/http/guld.legal/; cp css/legal.css ~/io/http/guld.legal/css/legal.css; rm ~/io/http/guld.legal/template.html;"
   },
   "repository": {
     "type": "git",
