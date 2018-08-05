@@ -10,9 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs": "npm run rename-readmes; markdown-folder-to-html",
     "rename-readmes": "find docs -name 'README.md' -exec bash -c 'mv $0 ${0/README.md/index.md}' {} \\;",
-    "clean": "rm -fR _docs/* docs/*.md docs/**/*.md docs/**/**/*.md docs/**/**/**/*.md docs/**/**/**/**/*.md",
+    "clean": "rm -fR _docs/* docs/*; find ~/io/http -name template.html -delete",
     "clean-legal": "rm -fR ~/io/http/guld.legal/contract ~/io/http/guld.legal/*.html docs/contract; npm run clean",
-    "build-legal": "npm run clean-legal; cp -r ~/Documents/guld/legal/* docs/; npm run docs; cp -fR _docs/* ~/io/http/guld.legal/; cp css/legal.css ~/io/http/guld.legal/css/legal.css; rm ~/io/http/guld.legal/template.html;"
+    "build-legal": "npm run clean-legal; cp -r ~/Documents/guld/legal/* docs/; npm run docs; cp -fR _docs/* ~/io/http/guld.legal/; cp css/legal.css ~/io/http/guld.legal/css/legal.css; npm run clean;",
+    "clean-info": "rm -fR ~/io/http/guld.info/**/*.html ~/io/http/guld.info/*.html docs/papers; npm run clean",
+    "build-info": "npm run clean-info; cp -r ~/Documents/guld/legal/* docs/; npm run docs; cp -fR _docs/* ~/io/http/guld.legal/; cp css/legal.css ~/io/http/guld.legal/css/legal.css; npm run clean;",
+    "clean-tech": "rm -fR ~/io/http/guld.tech/**/*.html ~/io/http/guld.tech/*.html docs/cli docs/lib docs/papers; npm run clean",
+    "build-tech": "npm run clean-tech; cp templates/tech.html docs/template.html; npm run build-tech-lib; npm run build-tech-cli; mkdir docs/papers; cp -r ~/Documents/guld/tech/*.md docs/papers/; mv docs/papers/guld-tech-intro.md docs/index.md; npm run docs; cp -fR _docs/* ~/io/http/guld.tech/; cp css/tech.css ~/io/http/guld.tech/css/tech.css; npm run clean;",
+    "build-tech-cli": "mkdir docs/cli; find ../ -maxdepth 1 -type d -name guld-*cli | grep -oh \"guld-.*\" | while read -r line ; do cp \"../$line/README.md\" \"docs/cli/$line.md\" ; done;",
+    "build-tech-lib": "mkdir docs/lib; find ../ -maxdepth 1 -type d -name guld-* | grep -v \"cli$\" | grep -oh \"guld-.*\" | while read -r line ; do cp \"../$line/README.md\" \"docs/lib/$line.md\" ; done; cp ../flexfs/README.md docs/lib/flexfs.md; cp ../gpg-conf/README.md docs/lib/gpg-conf.md; cp ../keyring-gpg/README.md docs/lib/keyring-gpg.md; cp ../keyring-interface/README.md docs/lib/keyring-interface.md; cp ..keyring-pgp/README.md docs/lib/keyring-pgp.md; cp ../keyvaluedb/README.md docs/lib/keyvaluedb.md; cp ../ledger-types/README.md docs/lib/ledger-types.md; rm docs/lib/guld-vrcave.md docs/lib/guld-chat.md docs/lib/guld-chrome.md"
   },
   "repository": {
     "type": "git",
